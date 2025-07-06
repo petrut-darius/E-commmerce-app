@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :initialize_cart
   include Pundit
   helper_method :current_cart
+  include Ahoy::Controller
 
   def current_cart
     @cart

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include Trackable
   helper Commontator::ApplicationHelper
   before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy add_to_favorite delete_from_favorite ]
@@ -10,8 +11,9 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-  @comment = Comment.new
-  @comments = @product.comments
+    @comment = Comment.new
+    @comments = @product.comments
+    track "Viewed Product", title: @product.name
   end
 
   # GET /products/new

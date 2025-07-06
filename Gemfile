@@ -73,3 +73,6 @@ group :development do
 end
 gem "sidekiq"
 gem "stripe"
+gem "activeadmin", "~> 3.3"
+gem "sassc-rails"
+gem "ahoy_matey"
