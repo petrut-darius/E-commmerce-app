@@ -1,0 +1,54 @@
+<%= form_with(model: product) do |f| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :size %>
+    <%= f.select :size, options_for_select([['XL', 'XL'], ['L', 'L'], ['M', 'M'], ['S', 'S'], ['XS', 'XS']]), class: "form-select" %>
+  </div>
+    
+
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, autofocus: true, autocomplete: 'price', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity, autofocus: true, autocomplete: 'quantity', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sex %>
+    <%= f.select :sex, options_for_select([['Male', 'male'], ['Female', 'female']]), class: "form-select" %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :color %>
+  <%= f.color_field :color, value: "#ff0000", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sku %>
+    <%= f.text_field :sku, autofocus: true, autocomplete: 'sku', class: 'form-control w' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Add/Edit product", class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Favorites</h1>
+<h2>All the products</h2>
+<hr>
+<% if @products.empty?%>
+  <p>You did not add any products to favorites</p>
+<% else %>
+  <% @products.each do |product|%>
+    <%= link_to product.name, product_path(product)%>
+    <br>
+  <% end %>
+<% end %>

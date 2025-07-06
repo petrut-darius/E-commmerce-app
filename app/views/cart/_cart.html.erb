@@ -1,0 +1,8 @@
+<h1>Cart</h1>
+<% if @cart.orderables.count > 0%>
+  <%= render "cart/orderables" %>
+  <!-- vezi ca am lasat sa dea puts de doua ori in products#index ca nu stiam ce o sa vrei sa faci pe viitor -->
+  <p>Total: <%= @cart.total %></p>
+<% else %>
+  <p>Your cart is empty</p>
+<% end %>
