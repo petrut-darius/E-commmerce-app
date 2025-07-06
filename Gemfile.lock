@@ -204,8 +204,6 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pay (11.1.1)
-      rails (>= 7.0.0)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -343,8 +341,8 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (2.7.1-x64-mingw-ucrt)
-    sqlite3 (2.7.1-x86_64-linux-gnu)
+    sqlite3 (2.7.2-x64-mingw-ucrt)
+    sqlite3 (2.7.2-x86_64-linux-gnu)
     sshkit (1.24.0)
       base64
       logger
@@ -407,7 +405,6 @@ DEPENDENCIES
   jbuilder
   kamal
   letter_opener
-  pay (~> 11.1)
   propshaft
   puma (>= 5.0)
   pundit (~> 2.5)
