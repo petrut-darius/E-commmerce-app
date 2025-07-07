@@ -76,3 +76,5 @@ gem "stripe"
 gem "activeadmin", "~> 3.3"
 gem "sassc-rails"
 gem "ahoy_matey"
+gem "disco"
+gem "whenever", require: false

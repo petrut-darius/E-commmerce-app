@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_06_200609) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_07_201806) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -290,6 +290,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_200609) do
     t.index ["sku"], name: "index_products_on_sku", unique: true
   end
 
+  create_table "user_interactions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.string "event_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_user_interactions_on_product_id"
+    t.index ["user_id"], name: "index_user_interactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -316,4 +326,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_200609) do
   add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+  add_foreign_key "user_interactions", "products"
+  add_foreign_key "user_interactions", "users"
 end
