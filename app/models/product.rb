@@ -5,4 +5,7 @@ class Product < ApplicationRecord
   acts_as_favoritable
   enum :sex, { male: 0, female: 1 }
   validates :sku, presence: true, uniqueness: true
+  acts_as_taggable_on :tags
+  has_and_belongs_to_many :tags
+  accepts_nested_attributes_for :tags
 end

@@ -49,6 +49,20 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :sex %>
+    <%= f.select :sex, options_for_select([['Male', 'male'], ['Female', 'female']]), class: "form-select" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags, "Tags" %><br>
+    <% Tag.all.each do |tag| %>
+      <%= check_box_tag "product[tag_ids][]", tag.id, @product.tag_ids.include?(tag.id), id: "tag_#{tag.id}" %>
+      <%= label_tag "tag_#{tag.id}", tag.name %><br>
+    <% end %>
+  </div>
+
+
+  <div class="form-group">
     <%= f.submit "Add/Edit product", class: 'btn btn-primary' %>
   </div>
 <% end %>

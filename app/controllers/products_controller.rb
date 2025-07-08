@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   helper Commontator::ApplicationHelper
   before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy add_to_favorite delete_from_favorite ]
-  before_action :set_recommender, only: %i[ show ]
+  # before_action :set_recommender, only: %i[ show ]
 
   # GET /products or /products.json
   def index
@@ -15,13 +15,6 @@ class ProductsController < ApplicationController
     @comment = Comment.new
     @comments = @product.comments
     track "Viewed Product", title: @product.name
-
-    if current_user
-      recommended_ids = @recommender.recommend(current_user.id, count: 5)
-      @recommended_products = Product.find(recommended_ids)
-    else
-      @recommended_products = Product.order("RANDOM()").limit(5)
-    end
   end
 
   # GET /products/new
@@ -90,16 +83,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:sku, :sex, :name, :size, :color)
-  end
-
-  def set_recommender
-    if File.exist?("tmp/disco_model.bin")
-      @recommender = Marshal.load(File.read("tmp/disco_model.bin"))
-    else
-      @recommender = Disco::Recommender.new
-    end
+    params.require(:product).permit(:sku, :sex, :name, :size, :color, :price, :quantity, tag_ids: [])
   end
 end
