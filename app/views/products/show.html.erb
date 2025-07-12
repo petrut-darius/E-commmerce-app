@@ -47,3 +47,11 @@ Sex: <%= @product.sex %><br>
 
   <%= f.submit "Post Comment" %>
 <% end %>
+
+<strong>Related products</strong>
+<hr>
+<% @products_same_tags.each do |prod| %>
+  Name: <%= prod.name %>
+  Id: <%= prod.id%>
+  <hr>
+<% end %>

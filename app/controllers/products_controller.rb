@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @comment = Comment.new
     @comments = @product.comments
     track "Viewed Product", title: @product.name
+    @products_same_tags = Product.joins(:tags).where(tags: { id: @product.tag_ids }).where.not(id: @product.id).distinct
   end
 
   # GET /products/new
