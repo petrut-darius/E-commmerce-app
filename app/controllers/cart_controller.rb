@@ -20,6 +20,12 @@ class CartController < ApplicationController
 
 
   def remove
-    Orderable.find_by(id: params[:id]).destroy
+  orderable = Orderable.find_by(id: params[:id])
+  if orderable
+    orderable.destroy
+    redirect_to cart_path, notice: "Item removed from cart."
+  else
+    redirect_to cart_path, alert: "Item not found."
+  end
   end
 end

@@ -1,5 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
+<strong>Images</strong>
+<% if @product.images.attached? %>
+  <% @product.images.each do |img|%>
+    <%= image_tag img, width: "200px", height: "300px"%>
+  <% end %>
+<% end %>
+
 <%= render @product %>
 Name: <%= @product.name %><br>
 Color: <%= @product.color %><br>

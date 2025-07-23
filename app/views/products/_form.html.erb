@@ -61,6 +61,10 @@
     <% end %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true, class: "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= f.submit "Add/Edit product", class: 'btn btn-primary' %>

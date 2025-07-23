@@ -71,8 +71,8 @@ gem "pundit", "~> 2.5"
 group :development do
   gem "letter_opener"
 end
-gem "sidekiq"
 gem "stripe"
 gem "activeadmin", "~> 3.3"
 gem "sassc-rails"
 gem "ahoy_matey"
+gem "kaminari"

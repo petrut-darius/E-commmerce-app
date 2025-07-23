@@ -23,8 +23,6 @@ Rails.application.routes.draw do
 
   get "cart", to: "cart#show"
   post "cart/add", to: "cart#add"
-  post "cart/remove", to: "cart#remove"
+  delete "cart/remove/:id", to: "cart#remove", as: "cart_remove"
   post "checkout/create", to: "checkout#create"
-  get "checkout/success", to: "checkout#success"
-  get "checkout/cancel", to: "checkout#cancel"
 end
